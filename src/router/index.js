@@ -7,7 +7,34 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/layout'
+    component: () => import('@/views/layout'),
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        component: () => import('@/views/home')
+      },
+      {
+        path: 'user-info',
+        component: () => import('@/views/user/userInfo')
+      },
+      {
+        path: 'user-avatar',
+        component: () => import('@/views/user/userAvatar')
+      },
+      {
+        path: 'user-pwd',
+        component: () => import('@/views/user/userPwd')
+      },
+      {
+        path: 'art-cate',
+        component: () => import('@/views/article/artCate.vue')
+      },
+      {
+        path: 'art-list',
+        component: () => import('@/views/article/artList')
+      }
+    ]
   },
   {
     path: '/reg',
@@ -16,10 +43,6 @@ const routes = [
   {
     path: '/login',
     component: () => import('@/views/login')
-  },
-  {
-    path: '/layout',
-    component: () => import('@/views/layout')
   }
 ]
 

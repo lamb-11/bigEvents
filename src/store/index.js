@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token: '', // 登录成功后会返回token值
-    userInfo: {} // 用户信息
+    userInfo: {} // 用户信息 {id,username,nickname,email,user_pic}
   },
   getters: {
     /* nickname: function (state) {
@@ -29,9 +29,8 @@ export default new Vuex.Store({
   actions: {
     async initUserInfo (store) {
       const { data: res } = await getUserInfoAPI()
-      if (res.code === 0) {
-        store.commit('updateUserInfo', res.data)
-      }
+      console.log('11', res)
+      store.commit('updateUserInfo', res.data)
     }
   },
   modules: {
